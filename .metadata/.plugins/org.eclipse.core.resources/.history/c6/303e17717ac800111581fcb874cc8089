@@ -1,0 +1,10 @@
+package ie.atu.testers;
+
+import java.util.ArrayList;
+import ie.atu.hotel.Room;
+
+public class RoomTester {
+	public static void main(String[] args) {
+		ArrayList<Room> rooms = new ArrayList<Room>();
+	}
+}

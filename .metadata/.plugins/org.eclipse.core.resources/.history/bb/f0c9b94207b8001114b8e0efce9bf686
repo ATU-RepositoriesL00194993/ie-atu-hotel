@@ -1,0 +1,43 @@
+package ie.atu.hotel;
+
+public abstract class Person {
+  protected Name name;
+  protected String phoneNumber;
+
+  public Person() {
+    this.name = new Name();
+    this.phoneNumber = "";
+  }
+
+  public Person(Name name, String phoneNumber) {
+    this.name = name;
+    this.phoneNumber = phoneNumber;
+  }
+
+  public String toString() {
+    return this.name + " number: " + this.number;
+  }
+
+  public boolean equals(Object other) {
+    if (!(obj instanceof Person other)) return false;
+    return other.getName().equals(this.name) &&
+      other.getPhoneNumber().equals(this.phoneNumber);
+  }
+
+  public Name getName() {
+    return this.name;
+  }
+
+  public void setName(Name name) {
+    this.name = name;
+  }
+
+  public String getPhoneNumber() {
+    return this.phoneNumber;
+  }
+
+  public void setPhoneNumber(String phoneNumber) {
+    this.phoneNumber = phoneNumber;
+  }
+}
+

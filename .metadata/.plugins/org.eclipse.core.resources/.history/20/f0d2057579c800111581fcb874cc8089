@@ -1,0 +1,98 @@
+/**
+ * Class: Software Implementation
+ * Instructor: Maria Boyle
+ * Description: Class Room - Developed for the Hotel System
+ * Date: 15/10/2026
+ * @author Mykhailo Yehrashkin
+ * L00194993
+ * @version 1.0
+ */
+package ie.atu.hotel;
+
+public class Room implements Reservable{
+    /* 
+     * A Room has a roomNumber, a roomType such as DOUBLE or KING or FAMILY, 
+     * a nightlyRate, and a boolean allocated which is set to true when the Room is booked.
+     * 
+     * SAMPLE Rooms INCLUDE : 101, DOUBLE, 180.00, false.
+     *                        108, KING, 190.00, true.
+     *                        111, FAMILY, 210.00, true.
+     */
+
+	// static variable to generate Room numbers
+	private static int nextNumber = 101;
+	// allowed room types
+	private static String[] allowedRoomTypes = {"DOUBLE", "KING", "FAMILY"};
+	
+    private int roomNumber;
+    private String roomType;
+    private double nightlyRate;
+    private boolean allocated;
+
+    /**************************/
+    /* TODO-WRITE CONSTRUCTOR */
+    /**************************/
+    public Room(String roomType, double nightlyRate) {
+    	this.setRoomType(roomType);
+    	this.setNightlyRate(nightlyRate);
+    	
+    	this.allocated = false;
+    	// generate room number
+    	this.roomNumber = nextNumber++;
+    }
+	
+    @Override
+    public String toString() {
+        return roomNumber + " " + roomType + " Room @ " + String.format("%.2f", nightlyRate) + " per night " + (allocated ? "BOOKED" : "FREE");
+    }
+	
+    @Override
+    public boolean equals(Object obj){
+        Room rObject;
+        if (obj instanceof Room)
+            rObject = (Room)obj;
+        else
+            return false;
+	 
+        return this.roomNumber == (rObject.roomNumber);
+    }
+
+    // You shouldn't be able to setNumber() as it is unique, 
+    // so don't provide a setNumber() method
+    
+    public void setRoomType(String roomType) throws IllegalArgumentException {
+    	// check if room type is allowed
+    	roomType = roomType.toUpperCase();
+    	for (String type : allowedRoomTypes) {
+    		if (roomType.equals(type)) {
+    			// everything is fine, exit
+    			this.roomType=roomType;
+    			return;
+    		}
+    	}
+    	// roomType is not in allowed types - throw exception
+        throw new IllegalArgumentException("Room type must be one of these " + allowedRoomTypes);
+    }
+    public void setNightlyRate(double nightlyRate) throws IllegalArgumentException{
+        if (nightlyRate < 180) {
+        	throw new IllegalArgumentException("Nightly rate must be at least 180");
+        }
+    	this.nightlyRate=nightlyRate;
+    }
+    public void setAllocated(boolean allocated) {
+        this.allocated=allocated;
+    }
+
+    public int getRoomNumber() {
+        return roomNumber;
+    }
+    public String getRoomType() {
+        return roomType;
+    }
+    public double getNightlyRate() {
+        return nightlyRate;
+    }
+    public boolean getAllocated() {
+        return allocated;
+    }
+}

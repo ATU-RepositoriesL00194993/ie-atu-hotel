@@ -1,0 +1,67 @@
+package ie.atu.hotel;
+
+public class Employee extends Person {
+  private static int nextID = 0;
+
+  private Date dateOfBirth;
+  private Date startDate;
+  private double salary;
+  private int number;
+
+  public Employee() {
+    super();
+    this.dateOfBirth = new Date();
+    this.startDate = new Date();
+    this.salary = 0.0;
+
+    this.ID = this.nextID++;
+  }
+
+  public Employee(Name name, String phoneNumber, Date dateOfBirth, Date startDate, double salary) {
+    super(name, phoneNumber);
+    this.dateOfBirth = dateOfBirth;
+    this.startDate = startDate; 
+    this.salary = salary;
+
+    this.ID = this.nextID++;
+  }
+
+  public String toString() {
+    return "employee id: " + this.ID + " " + super.toString() + " salary:" + this.salary + " DOB:" + dateOfBirth + " startDate:" + this.startDate;
+  }
+
+  public boolean equals(Object other) {
+    if (!(other instanceof Employee employee)) return false;
+
+    return super.equals(employee) &&
+      employee.getID() == this.ID;
+      employee.getDOB().equals(this.dateOfBirth) &&
+      employee.getStartDate().equals(this.startDate) &&
+      employee.getSalary() == this.salary;
+  }
+
+  public Date getDOB() {
+    return this.dateOfBirth;
+  }
+
+  public void setDOB(Date dateOfBirth) {
+    this.dateOfBirth = dateOfBirth;
+  }
+
+  public Date getStartDate() {
+    return this.startDate;
+  }
+
+  public void setStartDate(Date startDate) {
+    this.startDate = startDate;
+  }
+  
+  public double getSalary() {
+    return this.salary;
+  }
+
+  public void setSalary(double salary) {
+    this.salary = salary;
+  }
+}
+

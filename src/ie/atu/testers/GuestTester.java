@@ -1,0 +1,20 @@
+package ie.atu.testers;
+
+import ie.atu.hotel.*;
+import java.util.ArrayList;
+
+public class GuestTester {
+  public static void main(String args[]) {
+    ArrayList<Guest> guestList = new ArrayList<Guest>();
+
+    guestList.add(new Guest(new Name("Mr","Homer", "Simpson"), "087 1234567", "homer.simpson@atu.ie", new PaymentCard(1111, new Date(31,12,2027), 111))); 
+    guestList.add(new Guest(new Name("Mrs","Marge", "Simpson"), "086 1234567", "marge.simpson@atu.ie", new PaymentCard(5555, new Date(31,12,2024), 222))); 
+    guestList.add(new Guest(new Name("Miss","Lisa","Simpson"),"087 9876543", "lisa.simpson@atu.ie", new PaymentCard(9999, new Date(31,3,2024), 333)));
+
+    for (Guest g : guestList) {
+      System.out.println(g);
+    }
+  }
+}
+
+

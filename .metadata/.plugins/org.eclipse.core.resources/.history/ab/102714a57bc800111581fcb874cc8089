@@ -1,0 +1,65 @@
+package ie.atu.testers;
+
+import java.util.ArrayList;
+import ie.atu.hotel.Room;
+
+public class RoomTester {
+	public static void main(String[] args) {
+		ArrayList<Room> rooms = new ArrayList<Room>();
+		
+		
+		try {
+			for (int i = 0; i < 5; i++) {
+				rooms.add(new Room("DOUBLE", 180.00));
+			}
+			for (int i = 0; i < 5; i++) {
+				rooms.add(new Room("KING", 190.00));
+			}
+			for (int i = 0; i < 3; i++) {
+				rooms.add(new Room("FAMILY", 210.00));
+			}
+		}
+		catch(IllegalArgumentException e) {
+			System.out.println("Error creating DOUBLE rooms");
+		}
+		
+		for (Room r : rooms) {
+			System.out.println(r);
+		}
+		// Count FAMILY rooms
+		System.out.println("\nFAMILY ROOM LIST");
+		int count = 0;
+		for (Room r : rooms) {
+			if (r.getRoomType().equals("FAMILY")) {
+				System.out.println(r);
+				count++;
+			}
+		}
+		// Display amount of family rooms
+		if (count > 0) {
+			System.out.println(count + " FAMILY ROOM(S)\n");
+		} else {
+			System.out.println("THERE ARE NO FAMILY ROOMS\n");
+		}
+		
+		// RESERVE FAMILY ROOM
+		boolean found = false;
+		for (Room r : rooms) {
+			if (r.getRoomType().equals("FAMILY")) {
+				r.reserve();
+				found = true;
+			}
+		}
+		if (!found) {
+			System.out.println("CANNOT RESERVE FAMILY ROOM, NO FAMILY ROOMS");
+		}
+		
+		// Count FAMILY rooms
+		System.out.println("FAMILY ROOM LIST");
+		for (Room r : rooms) {
+			if (r.getRoomType().equals("FAMILY")) {
+				System.out.println(r);
+			}
+		}
+	}
+}

@@ -1,0 +1,50 @@
+package ie.atu.hotel;
+
+import ie.atu.hotel.PaymentCard;
+import ie.atu.hotel.Name;
+
+public class Guest extends Person {
+  private String emailAddress;
+  private PaymentCard paymentCard;
+
+  public Guest() {
+    super();
+    this.emailAddress = "";
+    this.paymentCard = null;
+  }
+
+  public Guest(Name name, String phoneNumber, String emailAddress, PaymentCard paymentCard) {
+    super(name, phoneNumber);
+    this.emailAddress = emailAddress;
+    this.paymentCard = paymentCard;
+  }
+
+  public String toString() {
+    return super.toString() + " email:" + emailAddress + " card:" + this.paymentCard;
+  }
+
+  public boolean equals(Object other) {
+    if (!(other instanceof Guest guest)) return false;
+
+    return super.equals(guest) &&
+      guest.getEmailAddress().equals(this.emailAddress) &&
+      guest.getPaymentCard().equals(this.paymentCard);
+  }
+
+  public String getEmailAddress() {
+    return this.emailAddress;
+  }
+
+  public void setEmailAddress(String emailAddress) {
+    this.emailAddress = emailAddress;
+  }
+
+  public PaymentCard getPaymentCard() {
+    return this.paymentCard;
+  }
+
+  public void setPaymentCard(PaymentCard paymentCard) {
+    this.paymentCard = paymentCard;
+  }
+}
+

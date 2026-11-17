@@ -5,4 +5,8 @@ Java project for booking hotel rooms
 
 ## Author
 Mykhailo Yehrashkin
-Student number L00194993
+
+Student number - L00194993
+
+---
+IDE used - eclipse
